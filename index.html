@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="As Sombras de Antônio Lunardi - Jogo de investigação paranormal e terror psicológico">
+  <title>As Sombras de Antônio Lunardi</title>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <div id="app">
+    <!-- HUD -->
+    <div id="hud" class="hidden">
+      <span id="hud-day">Dia 1 / 30</span>
+      <span id="hud-time">Manhã</span>
+      <span id="hud-clues">🔍 0 pistas</span>
+      <span id="hud-accusations">⚖️ 0/5</span>
+      <button class="hud-btn" onclick="UI.renderDossier()">📋 Dossiê</button>
+    </div>
+
+    <!-- TITLE SCREEN -->
+    <div id="title-screen" class="screen active">
+      <div class="title-container">
+        <h1>As Sombras de<br>Antônio Lunardi</h1>
+        <p class="subtitle">Investigação Paranormal &bull; Terror Psicológico</p>
+        <button class="start-btn" onclick="startNewGame()">Iniciar Investigação</button>
+        <button class="start-btn" id="load-btn" onclick="loadGame()" style="display:none; margin-top:10px; border-color:var(--accent-blue); color:var(--accent-blue);">Continuar Investigação</button>
+        <p class="title-lore">
+          A pacata cidade de Antônio Lunardi está sendo assolada por desaparecimentos inexplicáveis.
+          Você tem <strong>30 dias</strong> para identificar o culpado antes que a cidade seja condenada ao exílio eterno.
+        </p>
+        <p class="title-lore" style="font-size:12px; margin-top:12px; color:#4a4a5e;">
+          Pressione <kbd style="background:#2a2a3a;padding:2px 6px;border-radius:3px;">D</kbd> para abrir o dossiê a qualquer momento
+        </p>
+      </div>
+    </div>
+
+    <!-- MAP SCREEN -->
+    <div id="map-screen" class="screen">
+      <h2 class="map-title">🗺️ Mapa de Antônio Lunardi</h2>
+      <div id="map-grid"></div>
+    </div>
+
+    <!-- LOCATION SCREEN -->
+    <div id="location-screen" class="screen">
+      <div id="location-content"></div>
+    </div>
+
+    <!-- DIALOGUE SCREEN -->
+    <div id="dialogue-screen" class="screen">
+      <div id="dialogue-content"></div>
+    </div>
+
+    <!-- TRIBUNAL SCREEN -->
+    <div id="tribunal-screen" class="screen">
+      <div id="tribunal-content"></div>
+    </div>
+
+    <!-- DOSSIER SCREEN -->
+    <div id="dossier-screen" class="screen">
+      <div id="dossier-content"></div>
+    </div>
+
+    <!-- PUZZLE SCREEN -->
+    <div id="puzzle-screen" class="screen">
+      <div id="puzzle-content"></div>
+    </div>
+
+    <!-- GAME OVER SCREEN -->
+    <div id="gameover-screen" class="screen">
+      <div id="gameover-content"></div>
+    </div>
+
+    <!-- VICTORY SCREEN -->
+    <div id="victory-screen" class="screen">
+      <div id="victory-content"></div>
+    </div>
+
+    <!-- PAUSE SCREEN -->
+    <div id="pause-screen" class="screen" style="background:rgba(10,10,15,0.95); z-index: 500;">
+      <div class="pause-container" style="text-align:center; max-width:400px; padding: 40px; border:2px solid var(--accent-gold); border-radius:12px; background:var(--bg-card);">
+        <h2 style="font-family:var(--font-title); color:var(--accent-gold); margin-bottom: 24px; font-size: 28px;">Jogo Pausado</h2>
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <button class="action-btn" onclick="resumeGame()">▶️ Continuar</button>
+          <button class="action-btn" onclick="saveGame()" style="border-color:var(--accent-blue); color:#6fa8bf;">💾 Salvar Jogo</button>
+          <button class="action-btn" onclick="quitToMenu()" style="border-color:var(--accent-red); color:var(--accent-red-glow);">🚪 Voltar ao Menu</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TERROR OVERLAY -->
+    <div id="terror-overlay"></div>
+
+    <!-- NOTIFICATION -->
+    <div id="notification"></div>
+  </div>
+
+  <script src="js/Database.js"></script>
+  <script src="js/ProceduralGen.js"></script>
+  <script src="js/GameState.js"></script>
+  <script src="js/UIController.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
